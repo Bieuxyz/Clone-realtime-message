@@ -7,7 +7,7 @@ import { MdOutlineGroupAdd } from 'react-icons/all'
 
 import { FullConversationType } from '@/app/types'
 import useConversation from '@/app/hooks/useConversation'
-import ConversationBox from "@/app/conversations/components/ConversationBox";
+import ConversationBox from '@/app/conversations/components/ConversationBox'
 
 interface Props {
   initialItems: FullConversationType[]

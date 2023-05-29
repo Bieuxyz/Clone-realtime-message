@@ -1,7 +1,7 @@
 import getUsers from '../actions/getUsers'
 import Sidebar from '../components/sidebar/Sidebar'
 import { PropsWithChildren } from 'react'
-import UserList from "./components/UserList";
+import UserList from './components/UserList'
 
 export default async function UsersLayout({ children }: PropsWithChildren) {
   const users = await getUsers()

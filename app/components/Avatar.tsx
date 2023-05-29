@@ -35,8 +35,8 @@ const Avatar: FC<AvatarProps> = ({ user }) => {
         />
       </div>
       {/*{isActive ? (*/}
-        <span
-          className="
+      <span
+        className="
             absolute
             block
             rounded-full
@@ -50,7 +50,7 @@ const Avatar: FC<AvatarProps> = ({ user }) => {
             md:h-3
             md:w-3
           "
-        />
+      />
       {/*) : null}*/}
     </div>
   )

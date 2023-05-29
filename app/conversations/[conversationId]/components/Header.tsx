@@ -3,6 +3,9 @@
 import React, { FC, useMemo } from 'react'
 import { Conversation, User } from '@prisma/client'
 import { useOtherUser } from '@/app/hooks/useOtherUser'
+import Link from 'next/link'
+import { HiChevronLeft, HiEllipsisHorizontal } from 'react-icons/hi2'
+import Avatar from '@/app/components/Avatar'
 
 interface Props {
   conversation: Conversation & { users: User[] }
@@ -18,10 +21,37 @@ const Header: FC<Props> = ({ conversation }) => {
   }, [conversation.isGroup, conversation.users.length])
 
   return (
-    <div className="bg-white w-full flex border-b sm:px04 py-3 px-4 lg:px-6 justify-between items-center shadow-sm">
+    <div
+      className="bg-white
+        w-full
+        flex
+        border-b-[1px]
+        sm:px-4
+        py-3
+        px-4
+        lg:px-6
+        justify-between
+        items-center
+        shadow-sm"
+    >
       <div className="flex gap-3 items-center">
-        Header
+        <Link
+          className="lg:hidden block text-sky-500 hover:text-sky-600 transition cursor-pointer"
+          href="/conversations"
+        >
+          <HiChevronLeft size={32} />
+        </Link>
+        <Avatar user={otherUser} />
+        <div className="flex flex-col">
+          <div>{conversation.name || otherUser.name}</div>
+          <div className="text-sm font-light text-neutral-500">{statusTet}</div>
+        </div>
       </div>
+      <HiEllipsisHorizontal
+        size={32}
+        onClick={() => {}}
+        className="text-sky-500 cursor-pointer hover:text-sky-600 transition"
+      />
     </div>
   )
 }
