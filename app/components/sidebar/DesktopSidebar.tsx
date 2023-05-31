@@ -2,26 +2,26 @@
 
 import DesktopItem from './DesktopItem'
 import useRoutes from '@/app/hooks/useRoutes'
-// import SettingsModal from './SettingsModal'
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import Avatar from '../Avatar'
 import { User } from '@prisma/client'
+import SettingsModal from '@/app/components/sidebar/SettingsModal'
 
 interface DesktopSidebarProps {
   currentUser: User
 }
 
-const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
+const DesktopSidebar: FC<DesktopSidebarProps> = ({ currentUser }) => {
   const routes = useRoutes()
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <>
-      {/*<SettingsModal*/}
-      {/*  currentUser={currentUser}*/}
-      {/*  isOpen={isOpen}*/}
-      {/*  onClose={() => setIsOpen(false)}*/}
-      {/*/>*/}
+      <SettingsModal
+        currentUser={currentUser}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
       <div
         className="
         hidden
