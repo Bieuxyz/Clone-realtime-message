@@ -2,6 +2,7 @@ import { Request } from 'next/dist/compiled/@edge-runtime/primitives/fetch'
 import { NextResponse } from 'next/server'
 import getCurrentUser from '@/app/actions/getCurrentUser'
 import prisma from '@/app/libs/prismadb'
+import { pusherSever } from '@/app/libs/pusher'
 
 export async function POST(request: Request) {
   try {
@@ -59,6 +60,18 @@ export async function POST(request: Request) {
           },
         },
       },
+    })
+
+    await pusherSever.trigger(conversationId, 'messages:new', newMessage)
+
+    const lastMessage =
+      updateConversation.messages[updateConversation.messages.length]
+
+    updateConversation.users.map((user) => {
+      pusherSever.trigger(user.email!, 'conversation:update', {
+        id: conversationId,
+        messages: [lastMessage],
+      })
     })
 
     return NextResponse.json(newMessage)

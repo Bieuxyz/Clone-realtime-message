@@ -45,13 +45,11 @@ const SettingsModal: FC<Props> = ({ currentUser, onClose, isOpen = false }) => {
     setIsLoading(true)
 
     axios
-      .post('/api/settings', {
-        data,
-      })
+      .post('/api/settings', data)
       .then(() => {
         router.refresh()
         onClose()
-      })
+      }).then(() => toast.success('Update information successfully!'))
       .catch(() => toast.error('Something went wrong!'))
       .finally(() => setIsLoading(false))
   }

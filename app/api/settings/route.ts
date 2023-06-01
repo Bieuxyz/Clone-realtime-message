@@ -13,6 +13,7 @@ export async function POST(
       name,
       image,
     } = body;
+    console.log(currentUser, body)
 
     if (!currentUser?.id) {
       return new NextResponse('Unauthorized', { status: 401 });

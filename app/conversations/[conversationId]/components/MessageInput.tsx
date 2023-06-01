@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
+import { FieldValues, UseFormRegister } from 'react-hook-form'
 
 interface Props {
   id: string
@@ -7,12 +7,10 @@ interface Props {
   placeholder?: string
   type?: string
   required?: boolean
-  errors?: FieldErrors
 }
 
 const MessageInput: FC<Props> = ({
   id,
-  errors,
   placeholder,
   type,
   required,

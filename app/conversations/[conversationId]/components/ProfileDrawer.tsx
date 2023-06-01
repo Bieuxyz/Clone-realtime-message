@@ -9,6 +9,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import Avatar from '@/app/components/Avatar'
 import AvatarGroup from '@/app/components/AvatarGroup'
 import ConfirmModal from '@/app/conversations/[conversationId]/components/ConfirmModal'
+import { useActiveListMember } from "@/app/hooks/useActiveListStore";
 
 interface Props {
   data: Conversation & { users: User[] }
@@ -18,6 +19,8 @@ interface Props {
 const ProfileDrawer: FC<Props> = ({ data, isOpen, onClose }) => {
   const [confirmOpen, setConfirmOpen] = useState(false)
   const otherUser = useOtherUser(data)
+  const members = useActiveListMember()
+  const isActive = members.indexOf(otherUser?.email!) !== -1
 
   const joinedDate = useMemo(() => {
     return format(new Date(otherUser.createdAt), 'PP')
@@ -32,8 +35,8 @@ const ProfileDrawer: FC<Props> = ({ data, isOpen, onClose }) => {
       return `${data.users.length} members`
     }
 
-    return 'Active'
-  }, [data.isGroup, data.users.length])
+    return isActive ? 'Active' : 'Offline'
+  }, [data.isGroup, data.users.length, isActive])
 
   return (
     <>
