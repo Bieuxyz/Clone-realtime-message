@@ -3,7 +3,7 @@ import { User } from '@prisma/client'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import Avatar from '@/app/components/Avatar'
-import LoadingModal from "@/app/components/modals/LoadingModal";
+import LoadingModal from '@/app/components/modals/LoadingModal'
 
 interface Props {
   data: User

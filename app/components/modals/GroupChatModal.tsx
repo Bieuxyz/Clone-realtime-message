@@ -26,6 +26,7 @@ const GroupChatModal: FC<Props> = ({ isOpen, users, onClose }) => {
     handleSubmit,
     setValue,
     watch,
+    reset,
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
@@ -46,6 +47,7 @@ const GroupChatModal: FC<Props> = ({ isOpen, users, onClose }) => {
       })
       .then(() => {
         router.refresh()
+        reset()
         onClose()
       })
       .catch(() => toast.error('Something went wrong'))

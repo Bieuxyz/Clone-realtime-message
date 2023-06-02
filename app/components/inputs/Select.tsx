@@ -28,11 +28,11 @@ const Select: FC<Props> = ({ label, options, onChange, disabled, value }) => {
           styles={{
             menuPortal: (base) => ({
               ...base,
-              zIndex: 9999
-            })
+              zIndex: 9999,
+            }),
           }}
           classNames={{
-            control:() => 'text-sm'
+            control: () => 'text-sm',
           }}
         />
       </div>

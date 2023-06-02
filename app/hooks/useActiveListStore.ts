@@ -23,7 +23,8 @@ const useActiveListStore = create<ActiveListStore>((set) => ({
   },
 }))
 
-export const useActiveListMember = () => useActiveListStore((state) => state.members)
+export const useActiveListMember = () =>
+  useActiveListStore((state) => state.members)
 
 export const useActiveListActions = () =>
   useActiveListStore((state) => state.actions)

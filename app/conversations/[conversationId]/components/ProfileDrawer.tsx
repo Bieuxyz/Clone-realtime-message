@@ -9,7 +9,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import Avatar from '@/app/components/Avatar'
 import AvatarGroup from '@/app/components/AvatarGroup'
 import ConfirmModal from '@/app/conversations/[conversationId]/components/ConfirmModal'
-import { useActiveListMember } from "@/app/hooks/useActiveListStore";
+import { useActiveListMember } from '@/app/hooks/useActiveListStore'
 
 interface Props {
   data: Conversation & { users: User[] }

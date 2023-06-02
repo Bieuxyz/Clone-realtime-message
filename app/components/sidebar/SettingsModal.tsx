@@ -49,7 +49,8 @@ const SettingsModal: FC<Props> = ({ currentUser, onClose, isOpen = false }) => {
       .then(() => {
         router.refresh()
         onClose()
-      }).then(() => toast.success('Update information successfully!'))
+      })
+      .then(() => toast.success('Update information successfully!'))
       .catch(() => toast.error('Something went wrong!'))
       .finally(() => setIsLoading(false))
   }
@@ -108,7 +109,7 @@ const SettingsModal: FC<Props> = ({ currentUser, onClose, isOpen = false }) => {
                   <CldUploadButton
                     options={{ maxFiles: 1 }}
                     onUpload={handleUpload}
-                    uploadPreset="pgc9ehd5"
+                    uploadPreset="m7xlwzlf"
                   >
                     <Button disabled={isLoading} secondary type="button">
                       Change

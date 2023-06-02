@@ -10,11 +10,7 @@ import useConversation from '@/app/hooks/useConversation'
 const Form = () => {
   const { conversationId } = useConversation()
 
-  const {
-    register,
-    handleSubmit,
-    setValue,
-  } = useForm<FieldValues>({
+  const { register, handleSubmit, setValue } = useForm<FieldValues>({
     defaultValues: {
       message: '',
     },

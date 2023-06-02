@@ -1,7 +1,7 @@
 import prisma from '@/app/libs/prismadb'
 import getCurrentUser from '@/app/actions/getCurrentUser'
 import { NextResponse } from 'next/server'
-import { pusherSever } from '@/app/libs/pusher'
+import { pusherServer } from '@/app/libs/pusher'
 
 export async function POST(request: Request) {
   try {
@@ -10,9 +10,10 @@ export async function POST(request: Request) {
     const body = await request.json()
     const { userId, isGroup, members, name } = body
 
-    if (!currentUser || !currentUser?.email) {
+    if (!currentUser?.id || !currentUser?.email) {
       return new NextResponse('Unauthorized', { status: 401 })
     }
+
     if (isGroup && (!members || members.length < 2 || !name)) {
       return new NextResponse('Invalid data', { status: 400 })
     }
@@ -38,7 +39,7 @@ export async function POST(request: Request) {
 
       newConversation.users.forEach((user) => {
         if (user.email) {
-          pusherSever.trigger(user.email, 'conversation:new', newConversation)
+          pusherServer.trigger(user.email, 'conversation:new', newConversation)
         }
       })
 
@@ -81,7 +82,7 @@ export async function POST(request: Request) {
 
     newConversation.users.map((user) => {
       if (user.email) {
-        pusherSever.trigger(user.email, 'conversation:new', newConversation)
+        pusherServer.trigger(user.email, 'conversation:new', newConversation)
       }
     })
 
